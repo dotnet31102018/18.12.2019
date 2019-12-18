@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+    class App extends React.Component {
+      // $scope = state
+      state = {
+        name: 'danny',
+        age: 30
+      }
+      render() {
+        return (
+          <div className="app-content">
+            <h1>Hello World!!!!!!</h1>
+            <p>Random number: {Math.random() * 10}</p>
+            <p>Name is {this.state.name} age is {this.state.age}</p>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<App />, $('#app')[0]);
+
+    // for fun
+    let elem = <h1>Hello World!</h1>
+  </script>
+</body>
+
+</html>
