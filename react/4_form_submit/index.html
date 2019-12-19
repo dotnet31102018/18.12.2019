@@ -2,10 +2,6 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
@@ -14,23 +10,39 @@
 </head>
 
 <body>
+
   <div id="app"></div>
+
   <script type="text/babel">
+  // JSX
     class App extends React.Component {
-      // $scope = state
-      state = {
-        name: 'danny',
-        age: 30
-      }
-      handleChange = (e) => {
-        this.setState({
-          name: e.target.value
-        })
-      }
-      handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(`submiting in POST the object ${JSON.stringify(this.state)} to the server....`)
-      }
+        // $scope
+        state = {
+            name : "",
+            age : 0
+        }
+        // <...>
+
+        handleChange = (e) => {
+            console.log(e.target)
+            switch (e.target.id) {
+                case "nameTB" :
+                            this.setState({
+                            name : e.target.value
+                            })
+                            break;
+                case "ageTB" :
+                            this.setState({
+                            age : e.target.value
+                            })
+                            break;   
+            }
+        }
+        handleSubmit = (e) => {
+            e.preventDefault()
+            // send POST message to server
+            console.log(this.state)
+        }
       render() {
         return (
           <div className="app-content">
@@ -38,20 +50,19 @@
             <p>Name is {this.state.name} age is {this.state.age}</p>
             <hr />
             <form onSubmit={this.handleSubmit}>
-              <p>NAME = <input type="text" onChange={this.handleChange} required /></p>
+              <p>NAME = <input type="text" onChange={this.handleChange} id="nameTB" required /></p>
+              <p>AGE = <input type="number" onChange={this.handleChange} id="ageTB" required /></p>
               <button type="submit">SUBMIT</button>
             </form>
           </div >
         )
       }
     }
-
-
     ReactDOM.render(<App />, $('#app')[0]);
-
     // for fun
     let elem = <h1>Hello World!</h1>
   </script>
+
 </body>
 
 </html>
